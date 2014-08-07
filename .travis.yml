@@ -25,5 +25,4 @@ script:
  - cabal install
  - cd tests
  - cabal install --constraint="optparse-applicative < $VERSION"
- - cd ..
  - optparse-applicative-tests
