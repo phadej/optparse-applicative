@@ -24,6 +24,8 @@ script:
  - cabal update
  - cabal install
  - cd tests
- - cabal install --constraint="optparse-applicative < $VERSION"
+ - cabal configure --constraint="optparse-applicative < $VERSION"
+ - cabal build
+ - cabal install
  - cd ..
  - optparse-applicative-tests
