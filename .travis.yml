@@ -20,12 +20,12 @@ install:
  - /bin/true
 
 script:
- - cabal info
- - cabal info | awk 'NR==1 { n=split($2,x,"-"); print x[n]; }'
+ - cabal update
+ - cabal info .
+ - cabal info . | awk 'NR==1 { n=split($2,x,"-"); print x[n]; }'
  - export VERSION=$(cabal info . | awk 'NR==1 { n=split($2,x,"-"); print x[n]; }')
  - echo "$VERSION"
  - cabal --version
- - cabal update
  - cabal install
  - cd tests
  - cabal configure --constraint="optparse-applicative < $VERSION"
