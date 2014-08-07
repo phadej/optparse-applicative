@@ -21,15 +21,9 @@ install:
 
 script:
  - cabal update
- - cabal info .
- - cabal info . | awk 'NR==1 { n=split($2,x,"-"); print x[n]; }'
  - export VERSION=$(cabal info . | awk 'NR==1 { n=split($2,x,"-"); print x[n]; }')
- - echo "$VERSION"
- - cabal --version
  - cabal install
  - cd tests
- - cabal configure --constraint="optparse-applicative < $VERSION"
- - cabal build
- - cabal install
+ - cabal install --constraint="optparse-applicative < $VERSION"
  - cd ..
  - optparse-applicative-tests
