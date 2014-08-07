@@ -21,6 +21,7 @@ install:
  - /bin/true
 
 script:
+ - cabal update
  - cabal install
  - cd tests
  - cabal install --constraint="optparse-applicative < $VERSION"
