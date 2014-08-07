@@ -15,14 +15,14 @@ before_install:
    else
      travis_retry sudo apt-get install happy alex
    fi
- - export VERSION=$(cabal info . | awk 'NR==1 { n=split($2,x,"-"); print x[n]; }')
 
 install:
  - /bin/true
 
 script:
+ - export VERSION=$(cabal info . | awk 'NR==1 { n=split($2,x,"-"); print x[n]; }')
  - echo "$VERSION"
- - cabal version
+ - cabal --version
  - cabal update
  - cabal install
  - cd tests
